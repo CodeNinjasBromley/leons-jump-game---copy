@@ -5,14 +5,19 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
 	
 })
 scene.onOverlapTile(SpriteKind.Player, sprites.dungeon.hazardLava0, function (sprite, location) {
-    game.gameOver(false)
+    if (score == 0) {
+        game.gameOver(false)
+    }
 })
 scene.onOverlapTile(SpriteKind.Player, sprites.dungeon.chestClosed, function (sprite, location) {
     game.gameOver(true)
 })
 scene.onOverlapTile(SpriteKind.Player, sprites.dungeon.hazardWater, function (sprite, location) {
-    game.gameOver(false)
+    if (score == 0) {
+        game.gameOver(false)
+    }
 })
+let score = 0
 let mySprite = sprites.create(assets.image`myImage`, SpriteKind.Player)
 controller.moveSprite(mySprite)
 mySprite.ay += 500
